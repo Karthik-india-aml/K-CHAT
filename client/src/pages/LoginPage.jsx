@@ -1,34 +1,36 @@
-import React, { useContext, useState } from 'react'
-import assets from '../assets/assets'
-import { AuthContext } from '../../context/AuthContext'
+import React, { useContext, useState } from "react";
+import assets from "../assets/assets";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginPage = () => {
-  const [currState, setCurrState] = useState("Sign up")
-  const [fullName, setFullName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [bio, setBio] = useState("")
-  const [isDataSubmitted, setIsDataSubmitted] = useState(false)
+  const [currState, setCurrState] = useState("Sign up");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
+  const [isDataSubmitted, setIsDataSubmitted] = useState(false);
 
-  const { login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
 
   const onSubmitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (currState === "Sign up" && !isDataSubmitted) {
-      setIsDataSubmitted(true)
-      return
+      setIsDataSubmitted(true);
+      return;
     }
 
     login(
       currState === "Sign up" ? "signup" : "login",
       { fullName, email, password, bio }
-    )
-  }
+    );
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black/40 backdrop-blur-2xl">
-
+    <div
+      className="min-h-screen flex items-center justify-center bg-black/40 backdrop-blur-2xl bg-cover bg-center"
+      style={{ backgroundImage: "url('/bg.svg.jpg')" }}
+    >
       <div className="flex items-center gap-24">
 
         {/* LEFT */}
@@ -48,8 +50,8 @@ const LoginPage = () => {
             {isDataSubmitted && (
               <img
                 src={assets.arrow_icon}
-                onClick={() => setIsDataSubmitted(false)}
                 className="w-5 cursor-pointer"
+                onClick={() => setIsDataSubmitted(false)}
               />
             )}
           </h2>
@@ -59,9 +61,9 @@ const LoginPage = () => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Full Name"
-              className="p-2 rounded-md bg-transparent border border-gray-400
-              focus:outline-none focus:ring-1 focus:ring-indigo-400"
               required
+              className="p-2 rounded-md bg-transparent border border-gray-400
+              focus:outline-none focus:ring-1 focus:ring-violet-500"
             />
           )}
 
@@ -70,34 +72,34 @@ const LoginPage = () => {
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
                 type="email"
-                className="p-2 rounded-md bg-transparent border border-gray-400
-                focus:outline-none focus:ring-1 focus:ring-indigo-400"
+                placeholder="Email"
                 required
+                className="p-2 rounded-md bg-transparent border border-gray-400
+                focus:outline-none focus:ring-1 focus:ring-violet-500"
               />
 
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
                 type="password"
-                className="p-2 rounded-md bg-transparent border border-gray-400
-                focus:outline-none focus:ring-1 focus:ring-indigo-400"
+                placeholder="Password"
                 required
+                className="p-2 rounded-md bg-transparent border border-gray-400
+                focus:outline-none focus:ring-1 focus:ring-violet-500"
               />
             </>
           )}
 
           {currState === "Sign up" && isDataSubmitted && (
             <textarea
+              rows={4}
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              rows={4}
               placeholder="Tell us about yourself..."
-              className="p-2 rounded-md bg-transparent border border-gray-400
-              focus:outline-none focus:ring-1 focus:ring-indigo-400"
               required
+              className="p-2 rounded-md bg-transparent border border-gray-400
+              focus:outline-none focus:ring-1 focus:ring-violet-500"
             />
           )}
 
@@ -114,11 +116,11 @@ const LoginPage = () => {
               <>
                 Already have an account?{" "}
                 <span
-                  onClick={() => {
-                    setCurrState("Login")
-                    setIsDataSubmitted(false)
-                  }}
                   className="text-violet-400 cursor-pointer"
+                  onClick={() => {
+                    setCurrState("Login");
+                    setIsDataSubmitted(false);
+                  }}
                 >
                   Login here
                 </span>
@@ -127,8 +129,8 @@ const LoginPage = () => {
               <>
                 Create an account{" "}
                 <span
-                  onClick={() => setCurrState("Sign up")}
                   className="text-violet-400 cursor-pointer"
+                  onClick={() => setCurrState("Sign up")}
                 >
                   Click here
                 </span>
@@ -138,7 +140,7 @@ const LoginPage = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
