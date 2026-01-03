@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import assets from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
-import { ChatContext } from '../../context/chatContext'
+import { ChatContext } from '../../context/ChatContext'
 
 const Sidebar = () => {
 
@@ -90,7 +90,7 @@ const Sidebar = () => {
               key={user._id}
               onClick={() => {
                 setSelectedUser(user)
-                clearUnseenMessages(user._id) // 🔥 CLEAR UNSEEN
+                clearUnseenMessages(user._id) 
               }}
               className={`flex items-center justify-between p-2 rounded-lg cursor-pointer
               hover:bg-white/5
@@ -113,7 +113,7 @@ const Sidebar = () => {
                 </div>
               </div>
 
-              {/* 🔥 UNSEEN BADGE */}
+              {/*  UNSEEN BADGE */}
               {unreadCount > 0 && (
                 <span className="min-w-[20px] h-5 px-1 flex items-center justify-center
                   rounded-full bg-violet-500 text-white text-xs">

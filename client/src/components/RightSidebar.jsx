@@ -1,12 +1,12 @@
 import React, { useContext, useMemo } from 'react'
 import assets from '../assets/assets'
-import { ChatContext } from '../../context/chatContext'
+import { ChatContext } from '../../context/ChatContext'
 
 const RightSidebar = ({ selectedUser }) => {
 
   const { messages } = useContext(ChatContext)
 
-  // ✅ only image messages
+  
   const sharedImages = useMemo(() => {
     if (!messages) return []
     return messages.filter(msg => msg.image)
